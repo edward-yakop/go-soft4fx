@@ -30,3 +30,6 @@ Includes order counts, winning percentage, win/loss in pips, net profit in money
 `<html-file>.closeOrders.csv`
 
 Contains parsed orders with a simple helper to quickly determine SL, TP in pips, SL/TP ratio, durations and Close in pips.
+
+## Badges
+![Go](https://github.com/ed-fx/go-soft4fx/workflows/Go/badge.svg)
