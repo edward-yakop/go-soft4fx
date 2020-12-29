@@ -11,7 +11,7 @@ import (
 	"strconv"
 )
 
-func ClosedOrders(simulator *simulator.Simulator) (err error) {
+func SimClosedOrders(simulator *simulator.Simulator) (err error) {
 	outputFilePath := simulator.FilePath + ".closeOrders.csv"
 	file, err := os.Create(outputFilePath)
 	if err != nil {
@@ -23,25 +23,26 @@ func ClosedOrders(simulator *simulator.Simulator) (err error) {
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
 
-	err = exportClosedOrder(simulator.FilePath, outputFilePath, simulator, writer)
-
+	err = writeClosedOrderHeader(writer)
+	if err == nil {
+		err = closeOrders(writer, outputFilePath, simulator)
+	}
 	return
 }
 
-func exportClosedOrder(simFilePath string, outputFilePath string, sim *simulator.Simulator, writer *csv.Writer) (err error) {
-	err = writeClosedOrderHeader(writer)
-	simFileName := filepath.Base(simFilePath)
-
+func closeOrders(writer *csv.Writer, outputFilePath string, sim *simulator.Simulator) (err error) {
+	simFileName := filepath.Base(sim.FilePath)
 	orders := sim.ClosedOrders
 	var s = getSymbol(orders)
 	for _, order := range orders {
 		row := closedOrderToRow(simFileName, s, order)
-		csvErr := writer.Write(row)
-		if csvErr != nil {
+		err = writer.Write(row)
+		if err != nil {
+			orderId := strconv.Itoa(order.Id)
 			outputFileName := filepath.Base(outputFilePath)
 			err = errors.Wrap(
-				csvErr,
-				"Failed to export closed order for order id ["+strconv.Itoa(order.Id)+"] to file ["+outputFileName+"]",
+				err,
+				"Failed to export closed order for order id ["+orderId+"] to file ["+outputFileName+"]",
 			)
 			return
 		}
@@ -96,4 +97,28 @@ func closedOrderToRow(simFileName string, s *symbol.Symbol, o *simulator.Order) 
 		csvconv.MoneyAmountExp(o.Profit),
 		csvconv.MoneyAmountExp(o.Total()),
 	}
+}
+
+func AggregateClosedOrders(sims []*simulator.Simulator) (err error) {
+	outputFilePath := "aggregate.closeOrders.csv"
+	file, err := os.Create(outputFilePath)
+	if err != nil {
+		err = errors.Wrap(err, "Failed to create file ["+outputFilePath+"]")
+		return
+	}
+	defer file.Close()
+
+	writer := csv.NewWriter(file)
+	defer writer.Flush()
+
+	err = writeClosedOrderHeader(writer)
+	if err == nil {
+		for _, sim := range sims {
+			err = closeOrders(writer, outputFilePath, sim)
+			if err != nil {
+				break
+			}
+		}
+	}
+	return
 }

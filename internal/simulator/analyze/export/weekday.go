@@ -11,9 +11,8 @@ import (
 	"strconv"
 )
 
-func weekday(result *analyze.Result) (err error) {
-	simFilePath := result.Simulator().FilePath
-	outputFilePath := simFilePath + ".byDayOfWeek.csv"
+func Weekday(result *analyze.Result) (err error) {
+	outputFilePath := result.Simulator().FilePath + ".weekday.csv"
 	file, err := os.Create(outputFilePath)
 	if err != nil {
 		err = errors.Wrap(err, "Failed to create file ["+outputFilePath+"]")
@@ -24,16 +23,18 @@ func weekday(result *analyze.Result) (err error) {
 	writer := csv.NewWriter(file)
 	defer writer.Flush()
 
-	err = exportByDayOfWeek(simFilePath, outputFilePath, result, writer)
+	err = weekdayHeader(writer)
+	if err == nil {
+		err = weekdayBody(writer, outputFilePath, result)
+	}
 
 	return
 }
 
-func exportByDayOfWeek(simFilePath string, outFilePath string, result *analyze.Result, writer *csv.Writer) (err error) {
-	err = writeByDayOfWeekHeader(writer)
-	simFileName := filepath.Base(simFilePath)
+func weekdayBody(writer *csv.Writer, outFilePath string, result *analyze.Result) (err error) {
+	simFileName := filepath.Base(result.Simulator().FilePath)
 
-	dow := result.DayOfWeek
+	dow := result.Weekday()
 	for _, day := range dow.Days() {
 		row := dayToRow(simFileName, day)
 		csvErr := writer.Write(row)
@@ -49,11 +50,11 @@ func exportByDayOfWeek(simFilePath string, outFilePath string, result *analyze.R
 	return
 }
 
-func writeByDayOfWeekHeader(writer *csv.Writer) error {
-	return writer.Write(byDayOfWeekHeader())
+func weekdayHeader(writer *csv.Writer) error {
+	return writer.Write(weekdayHeaderContent())
 }
 
-func byDayOfWeekHeader() []string {
+func weekdayHeaderContent() []string {
 	return []string{
 		"File", "Day",
 		"NoOfTrades", "NoOfProfitTrades", "NoOfLossTrades", "WinPct",
@@ -81,4 +82,25 @@ func dayToRow(simFileName string, d *analyze.Day) []string {
 		csvconv.MoneyAmountExp(d.NetProfitInMoney()),
 		csvconv.Float64With2DecimalExp(d.NetGainInMoneyPct()),
 	}
+}
+
+func AggregateWeekday(results []*analyze.Result) (err error) {
+	outputFilePath := "aggregate.weekday.csv"
+	file, err := os.Create(outputFilePath)
+	if err != nil {
+		err = errors.Wrap(err, "Failed to create file ["+outputFilePath+"]")
+		return
+	}
+	defer file.Close()
+
+	writer := csv.NewWriter(file)
+	defer writer.Flush()
+
+	err = weekdayHeader(writer)
+	if err == nil {
+		for _, result := range results {
+			err = weekdayBody(writer, outputFilePath, result)
+		}
+	}
+	return
 }
