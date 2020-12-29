@@ -4,6 +4,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"github.com/Rhymond/go-money"
 	"github.com/pkg/errors"
+	"log"
 	"math"
 	"strconv"
 	"strings"
@@ -32,7 +33,11 @@ var locNewYork *time.Location = nil
 
 func locationNewYork() *time.Location {
 	if locNewYork == nil {
-		locNewYork, _ = time.LoadLocation("America/New_York")
+		temp, err := time.LoadLocation("EST")
+		if err != nil {
+			log.Fatal("Unable to load new york location for parsing time")
+		}
+		locNewYork = temp
 	}
 	return locNewYork
 }
