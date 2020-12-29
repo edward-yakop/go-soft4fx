@@ -22,14 +22,37 @@ go-soft4fx <directory/html-file>
 
 ## Output file
 
-`<html-file>.byDayOfWeek.csv`
+`<html-file>.weekday.csv`
 
 Contains simple analysis of trades aggregated by days.
 Includes order counts, winning percentage, win/loss in pips, net profit in money and percentage for a simulator.
 
 `<html-file>.closeOrders.csv`
 
-Contains parsed orders with a simple helper to quickly determine SL, TP in pips, SL/TP ratio, durations and Close in pips.
+Contains parsed closed orders with a simple helper to quickly determine SL, TP in pips, SL/TP ratio, durations and Close in pips.
+
+`aggregate.closeOrders.csv`
+
+Contains all parsed closed orders for all simulator results.
+
+`aggregate.weekday.csv`
+
+Contains all weekday analysis into a single file.
+
+`summary.weekday.csv`
+
+Contains summary of all simulator's weekday analysis.
+
+For example:
+
+| Day       	| NoOfTrades 	| NoOfProfitTrades 	| NoOfLossTrades 	| AvgWinPct 	| ProfitTradesInPips 	| LossTradesInPips 	| NetProfitTradesInPips 	| PipsNetProfitGainPct 	|
+|-----------	|------------	|------------------	|----------------	|-------------	|--------------------	|------------------	|-----------------------	|----------------------	|
+| Thursday  	|   78         	|   67            	|   11             	|   85.90      	|    2837.9            	|     -459.0       	|     2378.9               	|     25.44            	|
+| Tuesday   	|   77         	|   67            	|   10             	|   87.01      	|    2792.7            	|     -429.6       	|     2363.1               	|     25.27            	|
+| Wednesday 	|   72         	|   60            	|   12             	|   83.33      	|    2463.6            	|     -509.0       	|     1954.6               	|     20.90            	|
+| Friday    	|   60         	|   51            	|   9             	|   85.00      	|    1621.4            	|     -191.4       	|     1430.0               	|     15.29            	|
+| Monday    	|   48         	|   38            	|   10             	|   79.17      	|    1410.9            	|     -186.6       	|     1224.3               	|     13.09            	|
+
 
 ## Badges
 ![Go](https://github.com/ed-fx/go-soft4fx/workflows/Go/badge.svg)

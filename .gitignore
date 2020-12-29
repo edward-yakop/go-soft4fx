@@ -1,3 +1,4 @@
 go-soft4fx*
 results/**
 dist/**
+.idea/**

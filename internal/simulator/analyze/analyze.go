@@ -5,29 +5,25 @@ import (
 	"github.com/pkg/errors"
 )
 
-type Result struct {
-	simulator *simulator.Simulator
-	DayOfWeek *Weekday
+func Analyze(sims []*simulator.Simulator) (result *AggregateResult, err error) {
+	result = &AggregateResult{}
+
+	for _, sim := range sims {
+		if r, aerr := analyze(sim); aerr != nil {
+			return nil, errors.Wrap(aerr, "Fail to analyze ["+sim.FilePath+"]")
+		} else {
+			result.add(r)
+		}
+	}
+
+	result.weekday = analyzeAggregateWeekday(result.weekdays())
+	return
 }
 
-func (r Result) Simulator() *simulator.Simulator {
-	return r.simulator
-}
-
-func Analyze(sim *simulator.Simulator) (result *Result, err error) {
-	if sim == nil {
-		err = errors.New("Argument [sim] must not be [null]")
-		return
+func analyze(simulator *simulator.Simulator) (result *Result, err error) {
+	weekday, err := analyzeByWeekday(simulator)
+	if err == nil {
+		result = &Result{simulator: simulator, weekday: weekday}
 	}
-
-	dayOfWeek, err := analyzeByDayOfWeek(sim)
-	if err != nil {
-		return
-	}
-	result = &Result{
-		simulator: sim,
-		DayOfWeek: dayOfWeek,
-	}
-
 	return
 }

@@ -30,25 +30,45 @@ type Day struct {
 }
 
 type Weekday struct {
-	Monday    *Day
-	Tuesday   *Day
-	Wednesday *Day
-	Thursday  *Day
-	Friday    *Day
+	monday    *Day
+	tuesday   *Day
+	wednesday *Day
+	thursday  *Day
+	friday    *Day
+}
+
+func (w Weekday) Monday() *Day {
+	return w.monday
+}
+
+func (w Weekday) Tuesday() *Day {
+	return w.tuesday
+}
+
+func (w Weekday) Wednesday() *Day {
+	return w.wednesday
+}
+
+func (w Weekday) Thursday() *Day {
+	return w.thursday
+}
+
+func (w Weekday) Friday() *Day {
+	return w.friday
 }
 
 func (w *Weekday) getByDayOfWeek(weekday time.Weekday) *Day {
 	switch weekday {
 	case time.Monday:
-		return w.Monday
+		return w.monday
 	case time.Tuesday:
-		return w.Tuesday
+		return w.tuesday
 	case time.Wednesday:
-		return w.Wednesday
+		return w.wednesday
 	case time.Thursday:
-		return w.Thursday
+		return w.thursday
 	case time.Friday:
-		return w.Friday
+		return w.friday
 	}
 
 	return nil
@@ -56,11 +76,11 @@ func (w *Weekday) getByDayOfWeek(weekday time.Weekday) *Day {
 
 func (w Weekday) Days() []*Day {
 	return []*Day{
-		w.Monday,
-		w.Tuesday,
-		w.Wednesday,
-		w.Thursday,
-		w.Friday,
+		w.monday,
+		w.tuesday,
+		w.wednesday,
+		w.thursday,
+		w.friday,
 	}
 }
 
@@ -76,13 +96,13 @@ func (w *Weekday) append(order *simulator.Order) (err error) {
 	return
 }
 
-func analyzeByDayOfWeek(sim *simulator.Simulator) (weekday *Weekday, err error) {
+func analyzeByWeekday(sim *simulator.Simulator) (weekday *Weekday, err error) {
 	weekday = &Weekday{
-		Monday:    newDay(time.Monday),
-		Tuesday:   newDay(time.Tuesday),
-		Wednesday: newDay(time.Wednesday),
-		Thursday:  newDay(time.Thursday),
-		Friday:    newDay(time.Friday),
+		monday:    newDay(time.Monday),
+		tuesday:   newDay(time.Tuesday),
+		wednesday: newDay(time.Wednesday),
+		thursday:  newDay(time.Thursday),
+		friday:    newDay(time.Friday),
 	}
 
 	for _, order := range sim.ClosedOrders {
@@ -163,7 +183,7 @@ func (d *Day) postConstruct(simProfitInPips float64, simLossProfitInPips float64
 	if simLossProfitInPips != 0 {
 		d.lossInPipsPct = pct(d.LossTradesInPips / simLossProfitInPips)
 	}
-	d.netGainInMoneyPct = pct(d.netProfit.AsMajorUnits() / netProfit.AsMajorUnits())
+	d.netGainInMoneyPct = pctInt64(d.netProfit.Amount(), netProfit.Amount())
 }
 
 func initWithZeroMoney(m *money.Money, currencyCode string) *money.Money {
