@@ -33,7 +33,7 @@ var locNewYork *time.Location = nil
 
 func locationNewYork() *time.Location {
 	if locNewYork == nil {
-		temp, err := time.LoadLocation("EST")
+		temp, err := time.LoadLocation("America/New_York")
 		if err != nil {
 			log.Fatal("Unable to load new york location for parsing time")
 		}
