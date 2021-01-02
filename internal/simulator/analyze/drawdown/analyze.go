@@ -23,7 +23,7 @@ func Analyze(sim *simulator.Simulator) (result *Result, err error) {
 	}
 
 	orders := result.orders
-	log.Println("Analyze drawdown for [", sim.FilePath, "]")
+	log.Println("Analyze drawdown [", sim.FilePath, "]")
 	bar := progress.CustomBar(20, progress.BarStyles[0])
 	bar.MaxSteps = uint(len(orders))
 	bar.Format = progress.MdlBarFormat

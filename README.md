@@ -4,6 +4,9 @@ go-soft4fx performs simple analysis of soft4fx html output file.
 
 Currently only orders from "closed transactions" are parsed and analyzed.
 
+## Badges
+![Go](https://github.com/ed-fx/go-soft4fx/workflows/Go/badge.svg)
+
 ## To Install
 
 Download the latest your platform of choice binary file and make that available in the execution PATH.
@@ -70,6 +73,3 @@ For example:
 | Friday    	|   60         	|   51            	|   9             	|   85.00      	|    1621.4            	|     -191.4       	|     1430.0               	|     15.29            	|
 | Monday    	|   48         	|   38            	|   10             	|   79.17      	|    1410.9            	|     -186.6       	|     1224.3               	|     13.09            	|
 
-
-## Badges
-![Go](https://github.com/ed-fx/go-soft4fx/workflows/Go/badge.svg)
