@@ -2,8 +2,8 @@ package csvconv
 
 import "time"
 
-func TimeExp(time *time.Time) string {
-	if time == nil || time.IsZero() {
+func TimeExp(time time.Time) string {
+	if time.IsZero() {
 		return ""
 	}
 	// 2020.01.13 17:00:00

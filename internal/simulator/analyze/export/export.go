@@ -24,6 +24,11 @@ func AggregateResult(result *analyze.AggregateResult) (err error) {
 	}
 
 	err = AggregateWeekday(result.Results())
+	if err != nil {
+		return
+	}
+
+	err = ExportAggregateDrawdown(result.Results())
 	return
 }
 
@@ -32,5 +37,9 @@ func Result(result *analyze.Result) (err error) {
 	if err == nil {
 		err = Weekday(result)
 	}
+	if err == nil {
+		err = Drawdown(result.Drawdown())
+	}
+
 	return
 }

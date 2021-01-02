@@ -32,7 +32,20 @@ Includes order counts, winning percentage, win/loss in pips, net profit in money
 
 `<html-file>.closeOrders.csv`
 
-Contains parsed closed orders with a simple helper to quickly determine SL, TP in pips, SL/TP ratio, durations and Close in pips.
+Contains parsed closed orders with additional columns:
+* SL in pips;
+* TP in pips;
+* TP/SL ratio;
+* Order durations in minutes; and 
+* Close in pips
+
+`<html-file>.drawdown.csv`
+
+Use closed orders as baseline with additional columns:
+* max drawdown (pips, time);  
+* max profit during trades (pips, DD, time); and
+* statistics on open/close price
+  This is to determine whether the order time was new york close.
 
 `aggregate.closeOrders.csv`
 
@@ -45,6 +58,10 @@ Contains all weekday analysis into a single file.
 `summary.weekday.csv`
 
 Contains summary of all simulator's weekday analysis.
+
+`aggregate.drawdown.csv`
+
+Contains all drawdown analysis in a single file
 
 For example:
 
