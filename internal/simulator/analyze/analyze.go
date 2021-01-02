@@ -2,6 +2,7 @@ package analyze
 
 import (
 	"forex/go-soft4fx/internal/simulator"
+	"forex/go-soft4fx/internal/simulator/analyze/drawdown"
 	"github.com/pkg/errors"
 )
 
@@ -20,10 +21,14 @@ func Analyze(sims []*simulator.Simulator) (result *AggregateResult, err error) {
 	return
 }
 
-func analyze(simulator *simulator.Simulator) (result *Result, err error) {
-	weekday, err := analyzeByWeekday(simulator)
-	if err == nil {
-		result = &Result{simulator: simulator, weekday: weekday}
-	}
+func analyze(sim *simulator.Simulator) (result *Result, err error) {
+	result = &Result{simulator: sim}
+
+	weekday, err := analyzeByWeekday(sim)
+	result.weekday = weekday
+
+	dd, err := drawdown.Analyze(sim)
+	result.dd = dd
+
 	return
 }

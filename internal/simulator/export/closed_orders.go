@@ -77,7 +77,7 @@ func closedOrderToRow(simFileName string, s *symbol.Symbol, o *simulator.Order) 
 	return []string{
 		simFileName,
 		strconv.Itoa(o.Id),
-		csvconv.TimeExp(&o.OpenTime),
+		csvconv.TimeExp(o.OpenTime),
 		o.Type.String(),
 		csvconv.Float64PtrWith2DecimalExp(o.Size),
 		o.Symbol,
@@ -87,7 +87,7 @@ func closedOrderToRow(simFileName string, s *symbol.Symbol, o *simulator.Order) 
 		csvconv.Float64With1DecimalExp(o.SLPips()),
 		csvconv.Float64With1DecimalExp(o.TpPips()),
 		csvconv.Float64With2DecimalExp(o.TpSLRatio()),
-		csvconv.TimeExp(&o.CloseTime),
+		csvconv.TimeExp(o.CloseTime),
 		csvconv.DurationExp(o.Duration()),
 		s.PricePtrToString(o.ClosePrice),
 		csvconv.Float64With1DecimalExp(o.ProfitPips()),
