@@ -1,4 +1,4 @@
-module forex/go-soft4fx
+module github.com/ed-fx/go-soft4fx
 
 go 1.15
 
