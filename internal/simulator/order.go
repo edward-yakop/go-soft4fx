@@ -1,8 +1,8 @@
 package simulator
 
 import (
-	"forex/go-soft4fx/internal/symbol"
 	"github.com/Rhymond/go-money"
+	"github.com/ed-fx/go-soft4fx/internal/symbol"
 	"github.com/pkg/errors"
 	"math"
 	"time"

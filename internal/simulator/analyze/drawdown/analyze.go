@@ -1,10 +1,10 @@
 package drawdown
 
 import (
-	"forex/go-soft4fx/internal/simulator"
-	"forex/go-soft4fx/internal/util"
 	"github.com/ed-fx/go-duka/api/tickdata"
 	"github.com/ed-fx/go-duka/api/tickdata/stream"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
+	"github.com/ed-fx/go-soft4fx/internal/util"
 	"github.com/gookit/gcli/v2/progress"
 	"github.com/pkg/errors"
 	"log"

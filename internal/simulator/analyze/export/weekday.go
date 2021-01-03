@@ -3,8 +3,8 @@ package export
 import (
 	"encoding/csv"
 	"fmt"
-	"forex/go-soft4fx/internal/simulator/analyze"
-	"forex/go-soft4fx/internal/util/csvconv"
+	"github.com/ed-fx/go-soft4fx/internal/simulator/analyze"
+	"github.com/ed-fx/go-soft4fx/internal/util/csvconv"
 	"github.com/pkg/errors"
 	"os"
 	"path/filepath"

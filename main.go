@@ -1,11 +1,11 @@
 package main
 
 import (
-	"forex/go-soft4fx/internal/path"
-	"forex/go-soft4fx/internal/simulator"
-	"forex/go-soft4fx/internal/simulator/analyze"
-	"forex/go-soft4fx/internal/simulator/analyze/export"
-	"forex/go-soft4fx/internal/simulator/parser"
+	"github.com/ed-fx/go-soft4fx/internal/path"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
+	"github.com/ed-fx/go-soft4fx/internal/simulator/analyze"
+	"github.com/ed-fx/go-soft4fx/internal/simulator/analyze/export"
+	"github.com/ed-fx/go-soft4fx/internal/simulator/parser"
 	"log"
 )
 

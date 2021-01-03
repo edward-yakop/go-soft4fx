@@ -1,8 +1,8 @@
 package analyze
 
 import (
-	"forex/go-soft4fx/internal/simulator"
-	"forex/go-soft4fx/internal/simulator/analyze/drawdown"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
+	"github.com/ed-fx/go-soft4fx/internal/simulator/analyze/drawdown"
 )
 
 type Result struct {

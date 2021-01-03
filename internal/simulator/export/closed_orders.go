@@ -2,9 +2,9 @@ package export
 
 import (
 	"encoding/csv"
-	"forex/go-soft4fx/internal/simulator"
-	"forex/go-soft4fx/internal/symbol"
-	"forex/go-soft4fx/internal/util/csvconv"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
+	"github.com/ed-fx/go-soft4fx/internal/symbol"
+	"github.com/ed-fx/go-soft4fx/internal/util/csvconv"
 	"github.com/pkg/errors"
 	"os"
 	"path/filepath"

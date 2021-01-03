@@ -1,8 +1,8 @@
 package analyze
 
 import (
-	"forex/go-soft4fx/internal/simulator"
 	"github.com/Rhymond/go-money"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
 	"github.com/pkg/errors"
 	"math"
 	"strconv"

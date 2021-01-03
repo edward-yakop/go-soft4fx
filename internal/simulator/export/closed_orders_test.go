@@ -1,9 +1,9 @@
 package export
 
 import (
-	"forex/go-soft4fx/internal/simulator"
-	"forex/go-soft4fx/internal/symbol"
 	"github.com/Rhymond/go-money"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
+	"github.com/ed-fx/go-soft4fx/internal/symbol"
 	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"

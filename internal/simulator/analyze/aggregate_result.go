@@ -1,7 +1,7 @@
 package analyze
 
 import (
-	"forex/go-soft4fx/internal/simulator"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
 )
 
 type AggregateResult struct {

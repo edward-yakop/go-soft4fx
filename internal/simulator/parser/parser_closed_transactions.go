@@ -1,9 +1,9 @@
 package parser
 
 import (
-	"forex/go-soft4fx/internal/simulator"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/Rhymond/go-money"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
 	"github.com/pkg/errors"
 	"strconv"
 )

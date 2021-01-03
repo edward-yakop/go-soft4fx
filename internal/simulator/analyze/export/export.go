@@ -1,8 +1,8 @@
 package export
 
 import (
-	"forex/go-soft4fx/internal/simulator/analyze"
-	"forex/go-soft4fx/internal/simulator/export"
+	"github.com/ed-fx/go-soft4fx/internal/simulator/analyze"
+	"github.com/ed-fx/go-soft4fx/internal/simulator/export"
 )
 
 func AggregateResult(result *analyze.AggregateResult) (err error) {

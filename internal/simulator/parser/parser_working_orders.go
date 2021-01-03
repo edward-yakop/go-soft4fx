@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"forex/go-soft4fx/internal/simulator"
 	"github.com/PuerkitoBio/goquery"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
 )
 
 // TODO: Currently not parsing working orders

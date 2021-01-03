@@ -1,9 +1,9 @@
 package drawdown
 
 import (
-	"forex/go-soft4fx/internal/simulator"
-	"forex/go-soft4fx/internal/symbol"
 	"github.com/ed-fx/go-duka/api/tickdata"
+	"github.com/ed-fx/go-soft4fx/internal/simulator"
+	"github.com/ed-fx/go-soft4fx/internal/symbol"
 	"math"
 	"time"
 )
