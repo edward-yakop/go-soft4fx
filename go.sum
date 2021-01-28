@@ -8,8 +8,8 @@ github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/ed-fx/go-duka v0.1.2 h1:7A6Qfh2w+FV68xWqjqJa6LXFU6+J7B4UlXd2sMa0uHM=
-github.com/ed-fx/go-duka v0.1.2/go.mod h1:SxS2atGR1qf7IQBdL/7Q+8hVkmhTCFNjbY9AE16SeFg=
+github.com/ed-fx/go-duka v0.3.0 h1:IcYbHqZLbTJBtcH793aD9fjwqUHlXNiumwSVJWjZ+mM=
+github.com/ed-fx/go-duka v0.3.0/go.mod h1:SxS2atGR1qf7IQBdL/7Q+8hVkmhTCFNjbY9AE16SeFg=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=
 github.com/fatih/color v1.10.0 h1:s36xzo75JdqLaaWoiEHk767eHiwo0598uUxyfiPkDsg=
 github.com/fatih/color v1.10.0/go.mod h1:ELkj/draVOlAH/xkhN6mQ50Qd0MPOk5AAr3maGEBuJM=

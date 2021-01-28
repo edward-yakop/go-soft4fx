@@ -44,6 +44,10 @@ func (s Symbol) PricePtrToString(v *float64) string {
 	return s.PriceToString(*v)
 }
 
+func (s Symbol) GetMetadata() *instrument.Metadata {
+	return s.metadata
+}
+
 func IsSymbolSupported(symbol string) bool {
 	return instrument.GetMetadata(symbol) != nil
 }

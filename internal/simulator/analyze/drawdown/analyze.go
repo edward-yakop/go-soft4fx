@@ -34,8 +34,9 @@ func Analyze(sim *simulator.Simulator) (result *Result, err error) {
 			continue
 		}
 
+		s := symbol.GetMetadata()
 		stream.
-			New(symbol.Symbol(), o.OpenTime(), o.CloseTime().Add(5*time.Minute), util.CacheFolder()).
+			New(s, o.OpenTime(), o.CloseTime().Add(5*time.Minute), util.CacheFolder()).
 			EachTick(func(time time.Time, tick *tickdata.TickData, e error) bool {
 				if e != nil {
 					err = e
